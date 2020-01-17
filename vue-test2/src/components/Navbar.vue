@@ -17,7 +17,9 @@
           <span>豆瓣电影</span>
       </router-link>
       <input placeholder="电影、影人、影院、电视剧">
-      <div class="search-btn"></div>
+      <div class="search-btn">
+        <img src="https://s2.ax1x.com/2020/01/17/lzAWfH.png" alt="">
+      </div>
     </div>
   </div>
 </template>
@@ -157,11 +159,19 @@ export default {
   }
   .search-btn {
     height: 34px;
-    width: 38px;
+    width: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
-    background: rebeccapurple;
+    // background: rebeccapurple;
+    background-color: #8a8a8a;
     box-shadow: 1px 1px 1px rgba(0,0,0,0.16);
+    img {
+      width: 40%;
+      height: 40%;
+    }
   }
 }
 </style>
