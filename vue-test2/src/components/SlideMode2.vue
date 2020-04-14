@@ -1,5 +1,5 @@
 <template>
-  <div class="contain">
+  <div class="contain" v-loading="loading">
     <div class="control">
       <h2 @click="data2new()">最新热门电影</h2>
       <span @click="data2weekly()">口碑榜</span>
@@ -44,6 +44,7 @@ export default {
       data2weekdata: false,
       movielist: [],
       // start: 1,
+      loading: false,
       newmovielist: [],
       weekmovielist: []
     }
@@ -57,12 +58,16 @@ export default {
       this.$nextTick(() => (this.data2weekdata = false))
     }
   },
+  mounted () {
+    this.loading = true
+  },
   created () {
     getNewMovies().then(res => {
       console.log('this is new')
       console.log(res.data.subjects)
       this.newmovielist = res.data.subjects
       this.movielist = res.data.subjects
+      this.loading = false
     })
     getWeekMovies().then(res => {
       console.log(res.data.subjects)

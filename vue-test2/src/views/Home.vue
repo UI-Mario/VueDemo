@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <div class="main" v-loading="loading">
-      <SlideMode1 :movielist="movielist" />
+    <div class="main">
+      <SlideMode1 />
       <SlideMode2 />
       <Gallery />
       <p>ToDo</p>
@@ -19,8 +19,6 @@ import SlideMode1 from '@/components/SlideMode1.vue'
 import SlideMode2 from '@/components/SlideMode2.vue'
 import Gallery from '@/components/Gallery.vue'
 
-import { getAllNowMovie } from '@/network/request'
-
 export default {
   name: 'home',
   components: {
@@ -30,20 +28,7 @@ export default {
   },
   data () {
     return {
-      movielist: [],
-      loading: false
     }
-  },
-  created () {
-    getAllNowMovie().then(res => {
-      // console.log('this is getallnowmovie')
-      console.log(res.data.subjects)
-      this.movielist = res.data.subjects
-      this.loading = false
-    })
-  },
-  mounted () {
-    this.loading = true
   }
 }
 </script>

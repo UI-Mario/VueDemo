@@ -87,6 +87,7 @@ export default {
 <style scoped lang="less" rel="stylesheet/less">
 .slide-item {
   width: 115px;
+  margin-right: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;

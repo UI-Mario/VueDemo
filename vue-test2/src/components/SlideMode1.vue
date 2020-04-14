@@ -1,5 +1,5 @@
 <template>
-  <div class="contain">
+  <div class="contain" v-loading="loading">
     <div class="control">
       <h2>正在热映</h2>
       <a href="">全部正在热映»</a>
@@ -26,6 +26,7 @@
       <div
         v-for="(movie, index) in movielist"
         :key="index"
+        class="slideItem"
       >
         <Slideitem
           :movieitem="movie"
@@ -38,17 +39,19 @@
 
 <script>
 import Slideitem from '@/components/SlideItem.vue'
+import { getAllNowMovie } from '@/network/request'
 
 export default {
   name: 'slidemode1',
   components: {
     Slideitem
   },
-  props: ['movielist'],
   data () {
     return {
       page: 1,
-      totalpage: 4
+      totalpage: 2,
+      loading: true,
+      movielist: []
     }
   },
   methods: {
@@ -62,7 +65,7 @@ export default {
       }
     },
     slideright: function () {
-      if (this.page < 4) {
+      if (this.page < 2) {
         // console.log(this.$refs.slide)
         let temp = this.page * (-675)
         this.$refs.slide.setAttribute('style', `left: ${temp}px`)
@@ -70,6 +73,17 @@ export default {
         this.page++
       }
     }
+  },
+  mounted () {
+    this.loading = true
+  },
+  created () {
+    getAllNowMovie().then(res => {
+      // console.log('this is getallnowmovie')
+      console.log(res.data.subjects)
+      this.movielist = res.data.subjects
+      this.loading = false
+    })
   }
 }
 </script>
@@ -138,13 +152,13 @@ export default {
     position: absolute;
     left: 0;
     transition: left 1s;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     height: 270px;
-    width: calc(675px * 4);
+    width: calc(675px * 2);
     // overflow: hidden;
     // background-color: burlywood;
+    .slideItem {
+      float: left;
+    }
   }
 }
 </style>
