@@ -9,6 +9,7 @@
             src="https://s2.ax1x.com/2020/01/11/l5RqKO.png"
             alt=""
             @click="slideleft()"
+            referrerpolicy ="never"
           >
         </div>
         <div class="img-contain">
@@ -16,6 +17,7 @@
             src="https://s2.ax1x.com/2020/01/11/l5RoP1.png"
             alt=""
             @click="slideright()"
+            referrerpolicy ="never"
           >
         </div>
       </div>

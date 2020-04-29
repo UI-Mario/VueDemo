@@ -1,12 +1,12 @@
 module.exports = {
-  outputDir: 'dist', //build输出目录
-  assetsDir: 'assets', //静态资源目录（js, css, img）
+  outputDir: 'dist', // build输出目录
+  assetsDir: 'assets', // 静态资源目录（js, css, img）
   // lintOnSave: false, //是否开启eslint
   devServer: {
     host: 'localhost',
     port: '8081',
-    https: false, //是否使用https协议
-    hotOnly: false, //是否开启热更新
+    https: false, // 是否使用https协议
+    hotOnly: false, // 是否开启热更新
     proxy: {
       '/v2': {
         target: 'https://douban.uieee.com',
@@ -16,6 +16,6 @@ module.exports = {
           '^/v2': '/v2'
         }
       }
-    },
+    }
   }
-};
+}
