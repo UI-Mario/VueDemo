@@ -8,12 +8,12 @@
       </div>
     </div>
     <div class="slide" ref="slide">
-      <div class="slide-contain" v-if="!data2weekdata">
+      <div class="slide-contain" v-show="!data2weekdata">
         <div v-for="(movie, index) in newmovielist" :key="index">
           <Slideitem2 v-if="index < 10" :movieitem="movie"/>
         </div>
       </div>
-      <div class="slide-contain" v-else>
+      <div class="slide-contain" v-show="data2weekdata">
         <div v-for="(movie, index) in weekmovielist" :key="index">
           <Slideitem2 v-if="index < 10" :movieitem="movie.subject"/>
         </div>
